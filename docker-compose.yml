@@ -1,0 +1,17 @@
+#version: '3.8'
+services:  
+  database:
+    container_name: postgres_vehicle
+    image: postgres:latest
+    restart: always
+    volumes:
+      - postgres:/var/lib/postgresql/data
+      #- ./pg_hba.conf:/var/lib/postgresql/data/pg_hba.conf
+    environment:      
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+      POSTGRES_PASSWORD: 123456     
+    ports:
+      - 5434:5432  
+volumes:
+  postgres:  
