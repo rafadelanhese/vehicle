@@ -10,6 +10,7 @@ import com.example.vehicle.domain.service.VehicleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.*;
 
 import static java.util.stream.Collectors.*;
@@ -19,6 +20,7 @@ import static java.util.stream.Collectors.*;
 public class VehicleServiceImpl implements VehicleService {
 
     private final VehicleRepository vehicleRepository;
+    private static final long WEEK_IN_DAYS = 7;
 
     @Override
     public VehicleResponse vehicleById(Long id) {
@@ -74,5 +76,13 @@ public class VehicleServiceImpl implements VehicleService {
         }
 
         return vehicleBrandResponses;
+    }
+
+    @Override
+    public List<VehicleResponse> createdLastWeek() {
+        LocalDate beginDate = LocalDate.now().minusDays(WEEK_IN_DAYS);
+        LocalDate endDate = LocalDate.now();
+
+        return vehicleRepository.findVehiclesCreatedInTheLastWeek(beginDate, endDate).stream().map(VehicleResponse::toRecord).toList();
     }
 }

@@ -44,6 +44,12 @@ public class VehicleController {
         return ResponseEntity.ok(vehicleBrandResponses);
     }
 
+    @GetMapping(value = "/created-last-week", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<VehicleResponse>> vehicleCreatedLastWeek(){
+        List<VehicleResponse> vehicleResponses = vehicleService.createdLastWeek();
+        return ResponseEntity.ok(vehicleResponses);
+    }
+
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<VehicleResponse> createVehicle(@RequestBody VehicleRequest vehicleRequest){
         VehicleResponse vehicleResponse = vehicleService.createVehicle(vehicleRequest);

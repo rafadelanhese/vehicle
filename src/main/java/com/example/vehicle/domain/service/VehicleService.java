@@ -15,4 +15,5 @@ public interface VehicleService {
     void deleteVehicle(Long id);
     List<VehicleResponse> notSold();
     List<VehicleBrandResponse> vehicleByBrand();
+    List<VehicleResponse> createdLastWeek();
 }
