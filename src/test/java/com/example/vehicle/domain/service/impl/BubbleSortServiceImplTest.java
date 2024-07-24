@@ -1,6 +1,5 @@
-package com.example.vehicle.domain.repository.impl;
+package com.example.vehicle.domain.service.impl;
 
-import com.example.vehicle.domain.service.BubbleSortService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

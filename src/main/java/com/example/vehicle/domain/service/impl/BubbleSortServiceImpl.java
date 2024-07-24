@@ -1,4 +1,4 @@
-package com.example.vehicle.domain.repository.impl;
+package com.example.vehicle.domain.service.impl;
 
 import com.example.vehicle.domain.service.BubbleSortService;
 import org.springframework.stereotype.Service;
