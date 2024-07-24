@@ -1,6 +1,7 @@
 package com.example.vehicle.application.response;
 
 import com.example.vehicle.application.request.VehicleRequest;
+import com.example.vehicle.domain.enumerated.Brand;
 import com.example.vehicle.domain.model.Vehicle;
 import lombok.Builder;
 
@@ -10,7 +11,7 @@ import java.time.LocalDateTime;
 public record VehicleResponse(
         Long id,
         String vehicle,
-        String brand,
+        Brand brand,
         Integer year,
         String description,
         boolean sold,

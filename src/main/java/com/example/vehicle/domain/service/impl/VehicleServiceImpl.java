@@ -17,6 +17,15 @@ public class VehicleServiceImpl implements VehicleService {
     private final VehicleRepository vehicleRepository;
 
     @Override
+    public VehicleResponse vehicleById(Long id) {
+        Optional<Vehicle> vehicle = vehicleRepository.findById(id);
+
+        if(!vehicle.isPresent()) throw new IllegalArgumentException();
+
+        return VehicleResponse.toRecord(vehicle.get());
+    }
+
+    @Override
     public VehicleResponse createVehicle(VehicleRequest vehicleRequest) {
         Vehicle vehicle = vehicleRepository.save(vehicleRequest.toEntity());
         return VehicleResponse.toRecord(vehicle);
@@ -33,5 +42,10 @@ public class VehicleServiceImpl implements VehicleService {
         Vehicle savedVehicle = vehicleRepository.save(newVehicle);
 
         return VehicleResponse.toRecord(savedVehicle);
+    }
+
+    @Override
+    public void deleteVehicle(Long id) {
+        vehicleRepository.deleteById(id);
     }
 }

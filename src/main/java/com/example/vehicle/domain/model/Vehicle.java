@@ -1,5 +1,6 @@
 package com.example.vehicle.domain.model;
 
+import com.example.vehicle.domain.enumerated.Brand;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,7 +20,8 @@ public class Vehicle {
     @GeneratedValue
     private Long id;
     private String vehicle;
-    private String brand;
+    @Enumerated(EnumType.STRING)
+    private Brand brand;
     private Integer year;
     private String description;
     private boolean sold;
